@@ -1,0 +1,48 @@
+---------------------TEMA 1 IOCLA----------------
+
+	Pentru a putea implementa propria functie
+printf, a fost nevoie de multiple conversii din  
+o baza in alta. Am construit mai multe functii:
+dec_to_string, care transforma un numar intreg in
+sir de caractere, hex_to_string care converteste 
+un intreg din baza 10 in baza 16 si creeaza un 
+sir de caractere si uint_to_string, care transforma
+un intreg fara semn intr-un sir. Pentru a face schimbarea
+dintr-o baza in alta, am luat restul de la impartirea
+numarului la baza dorita si il adaugam intr-un sir 
+de caractere. Sirul de caractere obtinut in urma 
+acestor conversii reprezinta inversul numarului cautat. 
+De aceea, am construit functia char_reverse, care are
+ca scop creearea inversului unui sir de caractere. 
+Un caz improtant il reprezinta valoarea minimaa a 
+tipului de date int. Pentru a reusi sa fac conversia 
+la sir de caractere cu succes,  a trebuit sa iau separat
+cazul in care se primea aceasta valoare si o incarcam 
+direct in sirul de caractere ce urmeaza a fi inversat.
+	A trebuit sa analizez mai multe cazuri, 
+asa ca am dorit  sa verific, caracter cu caracter,
+sirul 'format'. Daca unul din caractere este '%', am
+verificat daca urmatorul caracter este un specificator,
+'c', 's', 'd', 'u', 'x', caz in care citeam
+urmatorul argument al functiei si apelam subprogramul 
+aferent fiecaruia. De mentionat faptul ca pentru 
+'%s', cazul in care avem de afisat un sir, nu trebuie
+facuta niciun fel de converise, iar pentru '%c', 
+limbajul C face automat cast la char cand apelam 
+va_arg(arg, int). A trebuit sa verific de asemenea 
+daca se repeta caracterul '%', caz in care, il afisam 
+normal. Pentru caracterele speciale '\n', '\t', sau orice 
+alt caracter ce nu este specificator, am construit
+un sir format doar din caracterul acela si terminator,
+pentru a il putea afisa folosind functia write_stdout. 
+	Pentru a putea returna numarul de caractere scrise 
+de functia iocla_printf, am folosit variabila x,
+pe care am adunat-o, de fiecare data cand afisam ceva,
+cu numarul de caractere afisate. Astfel, la finalul 
+functiei, x reprezenta numarul total de caractere scrise.
+	Am definit 2 macro-uri, LEN 100, care
+reprezinta lungimea maxima a unui sir de caractere cu
+care trebuie sa lucrez si SMALL 2, care reprezinta
+dimensiunea minima a unui sir de caractere pe care
+trebuie sa il creez, asa incat acesta sa contina un
+caracter de afisat si terminatorul de sir.
